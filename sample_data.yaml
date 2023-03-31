@@ -1,0 +1,17 @@
+key1:
+  key1_1: Value for key1_1
+  key1_2:
+  - id: 1
+    value: value for first element in key1_2
+  - id: 1
+    value: value for second element in key1_2
+  - id: 1
+    value: value for third element in key1_2
+key2:
+- first element in key2
+- second element in key2
+- third element in key2
+key3:
+  key3_1:
+    key3_1_1:
+      key3_1_1_1: value for key3_1_1_1
