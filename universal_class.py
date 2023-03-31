@@ -16,7 +16,7 @@ def isfloat(val: str) -> bool:
     else:
         return True
 
-
+DEBUG = True
 
 class UniClass:
     def __init__(self, path = '', doPrint = True):
@@ -59,7 +59,7 @@ class UniClass:
                 res = loads(content)
                 if self.print: print(f"json spotted!")
                 
-            except:
+            except Exception as e:
                 pass
             else:
                 return self.load_json(content)
@@ -68,7 +68,7 @@ class UniClass:
             try:
                 res = yamLoad(content)
                 if self.print: print(f"yaml spotted")
-            except:
+            except Exception as e:
                 pass
             else:
                 return self.load_yaml(res)
@@ -85,11 +85,12 @@ class UniClass:
                     "[default]\n" + content
                 )
                 return self.understand_content(content, "tmp_ini.ini","INI")
-            except:
+            except Exception as e:
                 if goto == 'INI':
                     if self.print: print(f"Nope, no ini file.")
                     #clean
                     DelFile(path)
+                    if DEBUG: print(f"Error on understand_content: {e}")
             else:
                 #INI file loaded in res, not convert to class obj
                 if goto == 'INI':
